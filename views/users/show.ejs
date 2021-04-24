@@ -1,0 +1,41 @@
+<div class="container main-content">
+  <div class="col-sm-10 mx-auto text-center">
+    <h1>
+      Users Info for <%= `${user.name.first_name} ${user.name.last_name}` %>
+    </h1>
+    <table
+      class="col-sm-10 mx-auto table table-success table-striped table-hover"
+    >
+      <tbody>
+        <tr>
+          <td class="text-right">Name:</td>
+          <td><%= `${user.name.first_name} ${user.name.last_name}` %></td>
+        </tr>
+        <tr>
+          <td class="text-right">Email:</td>
+          <td><%= user.email %></td>
+        </tr>
+        <tr>
+          <td class="text-right">Street:</td>
+          <td><%= user.address.street %></td>
+        </tr>
+        <tr>
+          <td class="text-right">City:</td>
+          <td><%= user.address.city %></td>
+        </tr>
+        <tr>
+          <td class="text-right">State:</td>
+          <td><%= user.address.state %></td>
+        </tr>
+        <tr>
+          <td class="text-right">City:</td>
+          <td><%= user.address.zip %></td>
+        </tr>
+        <tr>
+          <td class="text-right"># of Courses:</td>
+          <td><%= user.courses.length %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

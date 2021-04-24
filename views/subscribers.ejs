@@ -1,0 +1,25 @@
+<div class="container main-content">
+  <div class="card-column d-flex justify-content-center">
+    <% subscribers.forEach( subscriber => { %>
+    <div class="card col-sm-3 text-center">
+      <div class="image card-img img-fluid">
+        <img src="http://localhost:3000/images/avatar.jpeg" alt="avatar logo" />
+      </div>
+      <div class="card-body">
+        <div class="card-title">
+          Name: <%= subscriber.first_name + " " + subscriber.last_name %>
+        </div>
+        <div class="card-text">
+          <p>Email: <%= subscriber.email%></p>
+          <p>Phone: <%= subscriber.phone%></p>
+          <p>
+            Address: <%= subscriber.address.street + " " +
+            subscriber.address.city + ", " + subscriber.address.state + ", " +
+            subscriber.address.zip %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <% }); %>
+  </div>
+</div>

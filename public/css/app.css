@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin-top: 65px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.image img {
+  position: relative;
+  width: 100%;
+}
+
+.about-image {
+  height: 256px;
+  width: 300px;
+}
+
+.main-content {
+  padding: 75px 0;
+  background-color: #75b79e;
+  flex: 1;
+}
+.course-list {
+  padding-top: 50px;
+}
+.pastry img {
+  margin: 10px 0;
+  border: 3px solid black;
+  box-shadow: 3px 3px 10px black;
+}
+
+.login-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin-top: 70px;
+  padding: 5px 10px;
+  background-color: transparent;
+  z-index: 10;
+}
+.logged {
+  display: flex;
+  min-height: 50px;
+  justify-content: space-between;
+}
+.logged p,
+.logged a {
+  position: relative;
+  height: 100%;
+}
+
+@media (max-width: 1000px) {
+  body {
+    padding-top: 214px;
+  }
+  .login-bar {
+    margin-top: 215px;
+  }
+}

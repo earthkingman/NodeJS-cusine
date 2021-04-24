@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.footer {
+    flex-shrink: 0;
+    width: 100%;
+    min-height: 64px;
+    background: #6A8CAF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 100px;
+    color: #B9F3C1;
+    z-index: 100;
+}
+
+.share-tabs {
+    position: relative;
+    height: 100%;
+    text-align: center;
+}
+.media {
+    display: flex;
+    margin: auto 0;
+    align-items: center;
+}
+.law p {
+    margin: 0 auto;
+}
+.social-logo {
+    height: 40px;
+}
+
+.media li {
+    list-style: none;
+    margin: 0 10px;
+}
+
+@media (max-width: 900px){
+    .footer {
+        flex-direction: column;
+    }
+}

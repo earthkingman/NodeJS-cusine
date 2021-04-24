@@ -1,0 +1,41 @@
+<div class="container main-content">
+    <div class="col-sm-12">
+        <div class="image text-center">
+            <img class="rounded img-fluid" src="http://localhost:3000/images/chef.jpeg" alt="bunuelos">
+        </div>
+    </div>
+    <div class="col-sm-12 text-center mx-auto">
+        <div class="course-list">
+            <h1>Available Courses</h1>
+            <% offeredCourses.forEach(course => { %>
+                <div class="row">
+                    <div class="col-sm-5 mx-auto pastry">
+                        <img class="rounded img-fluid" src="<%= course.pic %>" alt="<%= course.title %>">
+                    </div>
+                    <div class="col-sm-5 m-auto">
+                        <div class="row">
+                            <h5 class="col-sm-12">
+                                <%= course.title %>
+                            </h5>
+                            <span class="col-sm-12">
+                                Cost: $<%= course.cost %>
+                            </span>
+                            <span class="col-sm-12">
+                                Instructor: <%= course.instructor %>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!--<h5>
+                    <%= course.title %>
+                </h5>
+                <span>
+                    $ <%= course.cost %>
+                </span>
+                <span>
+                    Instructor: <%= course.instructor %>
+                </span>-->
+            <% }); %>
+        </div>
+    </div>
+</div>

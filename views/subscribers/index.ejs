@@ -1,0 +1,41 @@
+<div class="container main-content">
+  <div class="col-sm-10 mx-auto text-center">
+    <h1>Subscribers</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% subscribers.forEach( (subscriber) => { %>
+        <tr>
+          <td>
+            <a href="<%= `/subscribers/${subscriber._id}` %>">
+              <%= `${subscriber.name.first_name} ${subscriber.name.last_name}`
+              %>
+            </a>
+          </td>
+          <td><%= subscriber.email %></td>
+          <td>
+            <a href="<%= `/subscribers/${subscriber._id}/edit` %>">Edit</a>
+          </td>
+          <td>
+            <a
+              href="<%= `/subscribers/${subscriber._id}/delete?_method=DELETE` %>"
+              onclick="return confirm('Are you sure?')"
+              >Delete</a
+            >
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <div>
+      <a href="/subscribers/new" class="btn btn-primary">Subscribe</a>
+    </div>
+  </div>
+</div>
