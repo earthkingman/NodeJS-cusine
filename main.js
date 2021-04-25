@@ -2,8 +2,9 @@ const homeController = require("./controllers/homeController");
 const errorController = require("./controllers/error_Controller");
 const subscriberController = require("./controllers/subscribersController");
 const Subscriber = require("./model/subscriber.js")
-const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/recipe_db",
+
+const mongoose = require("mongoose"); // 몽구스 요청
+mongoose.connect("mongodb://localhost:27017/recipe_db",  // 데이터베이스 연결 설정
 {useNewUrlParser: true, useUnifiedTopology: true}
 );
 const db = mongoose.connection;
@@ -39,10 +40,9 @@ app.get('/', (req, res)=>{
 app.get("/course", homeController.showCourse); //코스 페이지, 연락처 페이지, 연락처 제출 양식을 위한 라우트의 추가
 app.get("/contact", homeController.showSignUp); 
 app.post("/contact", homeController.postedSignUpForm);
-app.get("/subscribers",subscriberController.getAllSubscribers, (req, res, next) =>{
-    subscribers = req.data;
-    res.render("subscribers",{subscribers : subscribers});
-});
+app.get("/subscribers",subscriberController.getAllSubscribers);
+app.get("/contact",subscriberController.getSubscriptionPage);
+app.post("/subscribe", subscriberController.saveSubscriber)
 
 // app.use(errorController.respondInternalError);
 // app.use(errorController.respondNoResourceFound);
