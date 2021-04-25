@@ -1,44 +1,40 @@
-<div class="container main-content">
-  <div class="col-sm-10 mx-auto text-center">
-    <h1>
-      Subscribers Info for <%= `${subscriber.name.first_name}
-      ${subscriber.name.last_name}` %>
-    </h1>
-    <table
-      class="col-sm-10 mx-auto table table-success table-striped table-hover"
-    >
-      <tbody>
-        <tr>
-          <td class="text-right">Name:</td>
-          <td>
-            <%= `${subscriber.name.first_name} ${subscriber.name.last_name}` %>
-          </td>
-        </tr>
-        <tr>
-          <td class="text-right">Email:</td>
-          <td><%= subscriber.email %></td>
-        </tr>
-        <tr>
-          <td class="text-right">Street:</td>
-          <td><%= subscriber.address.street %></td>
-        </tr>
-        <tr>
-          <td class="text-right">City:</td>
-          <td><%= subscriber.address.city %></td>
-        </tr>
-        <tr>
-          <td class="text-right">State:</td>
-          <td><%= subscriber.address.state %></td>
-        </tr>
-        <tr>
-          <td class="text-right">City:</td>
-          <td><%= subscriber.address.zip %></td>
-        </tr>
-        <tr>
-          <td class="text-right"># of Courses:</td>
-          <td><%= subscriber.courses.length %></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<h1 class="center">Subscriber Data for
+  <%= subscriber.name %>
+</h1>
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <td>
+      <%= subscriber.name %>
+    </td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td>
+      <%= subscriber.email%>
+    </td>
+  </tr>
+  <tr>
+    <th>Zip Code</th>
+    <td>
+      <%= subscriber.zipCode%>
+    </td>
+  </tr>
+</table>
+
+<p>This subscriber has
+  <%= subscriber.courses.length %> associated course(s)
+</p>
+
+<div>
+  <a class="button" href="<%=`/subscribers/${subscriber._id}/edit`%>">
+    Edit Subscriber Details
+  </a>
+</div>
+<div>
+  <a class="button" href="<%= `/subscribers/${subscriber._id}/delete?_method=DELETE` %>" onclick="return confirm('Are you sure you want to delete this record?')" a>Delete</a>
+</div>
+<div>
+  <a class="button" href="/subscribers">View all subscribers</a>
 </div>

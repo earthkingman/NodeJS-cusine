@@ -1,87 +1,14 @@
-<div class="container main-content">
-  <div class="col-sm-12">
-    <div class="image text-center">
-      <img
-        class="rounded img-fluid"
-        src="http://localhost:3000/images/join.jpeg"
-        alt="social gathering"
-      />
-    </div>
-  </div>
-  <br />
-  <div class="col-sm-6 mx-auto text-center">
-    <h1>Update Course</h1>
-    <p>Enter the information below!</p>
-    <form
-      action="<%= `/courses/${course._id}/update?_method=PUT`%>"
-      method="POST"
-    >
-      <div class="form-group row">
-        <input
-          class="col-sm-12 form-control mx-auto"
-          type="text"
-          id="title"
-          name="title"
-          value="<%= course.title %>"
-          placeholder="Title"
-          required
-        />
-      </div>
-      <div class="form-group row">
-        <textarea
-          class="col-sm-12 form-control mx-auto"
-          id="description"
-          name="description"
-          value="<%= course.description %>"
-          placeholder="Write a description"
-          required
-        ></textarea>
-      </div>
-
-      <div class="form-group row">
-        <input
-          class="col-sm-12 mx-auto form-control"
-          type="text"
-          id="instructor"
-          name="instructor"
-          value="<%= course.instructor %>"
-          placeholder="Instructor"
-          required
-        />
-      </div>
-
-      <div class="form-group row">
-        <input
-          class="col-sm-12 mx-auto form-control"
-          type="number"
-          id="cost"
-          name="cost"
-          value="<%= course.cost %>"
-          placeholder="0.00"
-          required
-        />
-      </div>
-
-      <div class="form-group row">
-        <input
-          class="col-sm-12 mx-auto form-control"
-          type="number"
-          id="maxStudents"
-          name="maxStudents"
-          value="<%= course.maxStudents %>"
-          placeholder="Max number of students"
-          required
-        />
-      </div>
-
-      <div class="form-buttons row">
-        <button class="btn btn-primary col-sm-3 mx-auto" type="submit">
-          Update
-        </button>
-        <button class="btn btn-secondary col-sm-3 mx-auto" type="reset">
-          Reset
-        </button>
-      </div>
-    </form>
-  </div>
+<div class="data-form">
+  <form class="form-signin" action="<%=`/courses/${course._id}/update?_method=PUT`%>" method="POST">
+    <h2 class="form-signin-heading">Edit course:</h2>
+    <label for="inputTitle">Title</label>
+    <input type="text" name="title" id="inputTitle" class="form-control" value="<%= course.title %>" placeholder="Title" autofocus>
+    <label for="inputDescription">Description</label>
+    <input type="text" name="description" id="inputDescription" class="form-control" value="<%= course.description %>" placeholder="Description">
+    <label for="inputMaxStudents">Max Students</label>
+    <input type="text" name="maxStudents" id="inputMaxStudents" pattern="\d*" class="form-control" value="<%= course.maxStudents %>" placeholder="Max Students" required>
+    <label for="inputCost">Cost</label>
+    <input type="text" name="cost" id="inputCost" pattern="\d*" class="form-control" value="<%= course.cost %>" placeholder="Cost" required>
+    <br /><button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+  </form>
 </div>
