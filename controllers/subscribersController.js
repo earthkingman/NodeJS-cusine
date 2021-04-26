@@ -1,10 +1,9 @@
-const subscriber = require("../model/subscriber");
+const Subscriber = require("../model/subscriber");
 
 exports.getAllSubscribers = (req, res) => {
-    Subscriber.find({})
-        .exec()  //find에서 exec 호출을 통해 프라미스를 돌려주기 위한 쿼리를 수행하는것
-        .then((subscriber) => {
-            res.render("subscribers", { subscriber: subscriber });
+    Subscriber.find({}).exec()  //find에서 exec 호출을 통해 프라미스를 돌려주기 위한 쿼리를 수행하는것 버전부터는 필수는 아니지만 그래도 붙이는 것을 추천합니다.
+        .then((subscribers) => {
+            res.render("subscribers", { subscribers: subscribers });
         }) //데이터베이스로부터 결과 제공
         .catch((error) => { // 프라미스에서 리젝트된 에러들을 캐치
             console.log(error.message);

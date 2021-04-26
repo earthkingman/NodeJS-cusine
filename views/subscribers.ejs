@@ -1,4 +1,21 @@
-<% subscribers.forEach(s => {%>
-    <p><b>Name: </b> <%= s.name%></p>
-    <p><b>Email: </b><%= s.email%></p>
-<% });%>
+<div class="container main-content">
+  <div class="card-column d-flex justify-content-center">
+    <% subscribers.forEach( s => { %>
+    <div class="card col-sm-3 text-center">
+      <div class="image card-img img-fluid">
+        <img src="http://localhost:3000/images/avatar.jpeg" alt="avatar logo" />
+      </div>
+      <div class="card-body">
+
+        <div class="card-text">
+            <p><b>Name: </b> <%= s.name%></p>
+            <p><b>Email: </b><%= s.email%></p>
+
+        </div>
+      </div>
+    </div>
+    <% }); %>
+  </div>
+</div>
+
+

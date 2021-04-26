@@ -2,7 +2,7 @@
 
 body {
   margin: 0;
-  padding-top: 130px;
+  padding-top: 150px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #625a56;
 }
@@ -53,7 +53,6 @@ a {
   cursor: pointer;
   display: inline-block;
   color: #fff;
-  margin-bottom: 2px;
 }
 
 .button:hover {
@@ -61,154 +60,34 @@ a {
   color: #ed4a0f;
 }
 
-.subscriber {
-  padding: 10px 0px;
-  border-bottom: 1px solid lightgray;
+.breakfast {
+  padding: 20px;
+  margin-bottom: 50px;
 }
 
-.subscriber p {
-  margin: 0;
+.breakfast img{
+  width: 300px;
+  float: right;
+  margin-right: 30px;
 }
 
-.list-container {
-  padding: 0 20px;
-  border: 3px solid #ffb568;
-  border-radius: 1px;
+.people {
+  padding: 20px;
+  margin-bottom: 50px;
 }
 
-.item-label {
-  font-weight: 600;
-  font-style: italic;
-  margin-right: 5px;
+.people img{
+  width: 300px;
+  float: right;
+  margin-left: 30px;
 }
 
-.subscription-form input {
-  display: block;
-  margin: 5px;
-}
-
-.data-form {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.data-form label {
-  margin: 5px 0 0 0;
-}
-
-.hidden-text {
-  -webkit-text-security: disc;
-}
-
-.flash {
-  background: rgba(193, 255, 193, .7);
-  color: #625a56;
-  width: 100%;
-  text-align: center;
-  padding: 10px 30px;
-  position: absolute;
-  top: 110px;
-  z-index: 2;
-}
-
-.error {
-  color: #fff;
-  background: rgba(209, 46, 42, 0.7);
-}
-
-.login {
-  position: absolute;
-  top: 0;
-  right: 10px;
-}
-
-button[type=submit] {
-  margin-top: 20px;
-}
-
-.login {
-  position: absolute;
-  right: 10px;
-  top: 5px;
-  padding: 10px;
-  background: #c1ffc1;
-  border-radius: 20px;
-}
-
-.login p {
-  margin: 0;
-}
-
-.log-out {
-  display: inline-block;
-  padding: 0 8px;
-  border-radius: 10px;
-  background: #fff;
-}
-
-@media (max-width: 760px) {
-  .login {
-    overflow: hidden;
-    white-space: nowrap;
-    font-size: 2vw;
-  }
-}
-
-#modal-button {
-  background-color: #ffe7a2;
-  color: #625956;
-  border: 1px solid;
-}
-
-.modal-dialog {
-  background: white;
-  border-radius: 15px;
-}
-
-.modal-title {
-  padding-top: 30px;
-  padding-top: 30px;
-  font-size: 30px;
-  font-family: "Baloo Bhaina";
-  color: #625956;
-  font-weight: 100;
-}
-
-.modal-body {
-  padding: 15px 30px;
-}
-
-.join-button {
-  position: absolute;
-  right: 35px;
-  margin-top: 30px;
-  border: 1px solid;
-}
-
-.joined-button {
-  position: absolute;
-  right: 35px;
-  margin-top: 30px;
-  background-color: #c1ffc1;
-  color: #625956;
-  border: 1px solid;
-}
-
-.course-title {
-  font-family: "Baloo Bhaina";
-  padding: 0 5px;
+.aboutus {
+  padding: 20px;
+  margin-bottom: 50px;
   font-size: 20px;
-  border-radius: 10px;
-  margin-top: 10px;
-  display: inline-block;
-  float: left;
 }
 
-.course-description {
-  /* border-bottom: 1px solid #625956; */
-  padding: 10px 10px 20px 10px;
-  text-align: left;
-  margin: 0 10px;
-  clear: left;
+.aboutus img{
+  margin-right: 30px;
 }
-
