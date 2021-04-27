@@ -1,34 +1,117 @@
 const Subscriber = require("../model/subscriber");
 
-exports.getAllSubscribers = (req, res) => {
-    Subscriber.find({}).exec()  //find에서 exec 호출을 통해 프라미스를 돌려주기 위한 쿼리를 수행하는것 버전부터는 필수는 아니지만 그래도 붙이는 것을 추천합니다.
-        .then((subscribers) => {
-            res.render("subscribers", { subscribers: subscribers });
-        }) //데이터베이스로부터 결과 제공
-        .catch((error) => { // 프라미스에서 리젝트된 에러들을 캐치
-            console.log(error.message);
-            return [];
-        })
-        .then(() => {  //프라미스 체인의 종료와 메세지 로깅
-            console.log("promise complete");
-        });
-};
-
-exports.getSubscriptionPage = (req, res) => {
-    res.render("contact");
+const getSubscriberParams = (body) => {
+    return {
+        name: body.name,
+        email: body.email,
+        zipCode: parseInt(body.zipCode)
+    };
 }
 
-exports.saveSubscriber = (req, res) => {
-    let newSubscriber = new Subscriber({
-        name: req.body.name,
-        email: req.body.email,
-        zipCode: req.body.zipCode
-    });
-    newSubscriber.save()
-        .then(() => {
-            res.render("thanks");
+module.exports = {
+    index: (req, res, next) => {
+        console.log("index");
+        Subscriber.find()
+            .then((subscribers) => {
+                res.locals.subscribers = subscribers;
+                next();
+            })
+            .catch(error => {
+                console.log(`Error fetching subscribers : $ {error.message}`);
+                next(error);
+            });
+    },
+    indexView: (req, res) => {
+        res.render("subscribers/index");
+    },
+
+    new: (req, res) => {
+        res.render("subscribers/new");
+    },
+
+    create: (req, res, next) => {
+        let subscriberParams = getSubscriberParams(req.body);
+        Subscriber.create(subscriberParams)
+          .then(subscriber => {
+            res.locals.redirect = "/subscribers";
+            res.locals.subscriber = subscriber;
+            next();
+          })
+          .catch(error => {
+            console.log(`Error saving subscriber: ${error.message}`);
+            next(error);
+          });
+    },
+
+    redirectView: (req, res, next) => {
+        let redirectPath = res.locals.redirect;
+        if (redirectPath !== undefined) 
+            res.redirect(redirectPath);
+        else 
+            next();
+    },
+
+    show: (req, res, next) => {
+        var subscriberId = req.params.id;
+        Subscriber.findById(subscriberId)
+            .then((subscriber) => {
+                res.locals.subscriber = subscriber;
+                next();
+            })
+            .catch(error => {
+                console.log(`Error fetching subscriber by ID: ${error.message}`)
+                next(error);
+            })
+    },
+
+    showView: (req, res) => {
+        res.render("subscribers/show");
+    },
+
+    edit: (req, res, next) => {
+        console.log("edit");
+        let subscriberId = req.params.id;
+        Subscriber.findById(subscriberId)
+            .then(subscriber => {
+                res.render("subscribers/edit", {
+                    subscriber: subscriber
+                });
+            })
+            .catch(error => {
+                console.log(`Error fetching subscriber by ID: ${error.message}`)
+                next(error);
+            })
+    },
+
+    update : (req, res, next) => {
+        console.log("update");
+        let subscriberId = req.params.id;
+        subscriberParams = getSubscriberParams(req.body);
+        Subscriber.findByIdAndUpdate(subscriberId, {
+            $set: subscriberParams
+        })
+        .then((subscribers)=> {
+            res.locals.redirect = `/subscriber/${subscriberId}`;
+            res.locals.subscriber = subscribers;
+            next();
         })
         .catch(error => {
-            res.send(error);
-        });
-}
+            console.log(`Error fetching subscriber by ID: ${error.message}`)
+            next(error);
+        })
+    },
+    delete : (req, res, next) => {
+        let subscriberId = req.params.id;
+        Subscriber.findByIdAndRemove(subscriberId)
+        .then(()=>{
+            console.log("성공");
+            res.locals.redirect = "/subscribers";
+            next();
+        })
+        .catch(error => {
+            console.log("실패");
+            console.log(`Error fetching subscriber by ID: ${error.message}`)
+            next(error);
+        })
+    }
+};
