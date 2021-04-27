@@ -1,6 +1,7 @@
-const Subscriber = require("../model/subscriber");
+const Subscriber = require("../models/subscriber");
 
 const getSubscriberParams = (body) => {
+    console.log(body)
     return {
         name: body.name,
         email: body.email,
@@ -31,6 +32,7 @@ module.exports = {
 
     create: (req, res, next) => {
         let subscriberParams = getSubscriberParams(req.body);
+        console.log(subscriberParams)
         Subscriber.create(subscriberParams)
           .then(subscriber => {
             res.locals.redirect = "/subscribers";
@@ -91,7 +93,7 @@ module.exports = {
             $set: subscriberParams
         })
         .then((subscribers)=> {
-            res.locals.redirect = `/subscriber/${subscriberId}`;
+            res.locals.redirect = `/subscribers/${subscriberId}`;
             res.locals.subscriber = subscribers;
             next();
         })

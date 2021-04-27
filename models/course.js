@@ -1,4 +1,4 @@
-const mongoose = require("mongoos"),
+const mongoose = require("mongoose"),
 
 const courseSchema = mongoose.Schema(
     {
