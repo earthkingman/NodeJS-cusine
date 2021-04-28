@@ -1,5 +1,6 @@
-const express = require('express');
-const router = express.Router(); // 
+// const express = require('express'); 주석과 같이 적어도됨
+// const router = express.Router(); 
+const router = require("express").Router();
 const subscribersController = require("../controllers/subscribersController")
 
 router.get("/", subscribersController.index, subscribersController.indexView);

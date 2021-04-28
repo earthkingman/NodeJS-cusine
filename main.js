@@ -4,7 +4,7 @@ const methodOverride = require("method-override");
 const mongoose = require("mongoose"); // 몽구스 요청
 const layouts = require("express-ejs-layouts"); // express-ejs-layout의 요청
 const express = require('express');  //express 요청
-const router = require("./routes/subscriberRoutes");
+const router = require("./routes");
 mongoose.connect("mongodb://localhost:27017/recipe_db",  // 데이터베이스 연결 설정
     {
         useNewUrlParser: true,
@@ -46,7 +46,7 @@ app.get('/', (req, res) => {
 // app.use(errorController.respondInternalError);
 // app.use(errorController.respondNoResourceFound);
 
-app.use('/subscribers',router);
+app.use("/", router);  //상위로 가면 오류발생
 app.listen(app.get("port"), () => {
     console.log(`Server running on port: ${app.get("port")}`);
 });
