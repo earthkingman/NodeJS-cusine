@@ -4,7 +4,7 @@ const methodOverride = require("method-override");
 const mongoose = require("mongoose"); // 몽구스 요청
 const layouts = require("express-ejs-layouts"); // express-ejs-layout의 요청
 const express = require('express');  //express 요청
-const router = express.Router(); //라우터 추가
+const router = require("./routes/subscriberRoutes");
 mongoose.connect("mongodb://localhost:27017/recipe_db",  // 데이터베이스 연결 설정
     {
         useNewUrlParser: true,
@@ -12,10 +12,7 @@ mongoose.connect("mongodb://localhost:27017/recipe_db",  // 데이터베이스 �
     }
 );
 const db = mongoose.connection;
-
-const port = 3000;
 app = express();   //express 애플리케이션의 인스턴스화
-app.use("/", router);
 app.use(express.json());
 app.use(methodOverride("_method", { methods: ["POST", "GET"] }));
 app.set("view engine", "ejs"); // ejs를 사용하기 위한 애플리케이션 세팅
@@ -31,28 +28,25 @@ app.get('/', (req, res) => {
 
 
 //SUBSCRIBERS
-app.get("/subscribers", subscribersController.index, subscribersController.indexView);
-app.get("/subscribers/new", subscribersController.new);
-app.get("/subscribers/:id", subscribersController.show, subscribersController.showView);
-app.get("/subscribers/:id/edit", subscribersController.edit);
-app.put("/subscribers/:id/update", subscribersController.update, subscribersController.redirectView);
-app.delete("/subscribers/:id/delete", subscribersController.delete, subscribersController.redirectView);
-app.post("/subscribers/create", subscribersController.create, subscribersController.redirectView);
-
-
-module.exports = router;
+// app.get("/subscribers", subscribersController.index, subscribersController.indexView);
+// app.get("/subscribers/new", subscribersController.new);
+// app.get("/subscribers/:id", subscribersController.show, subscribersController.showView);
+// app.get("/subscribers/:id/edit", subscribersController.edit);
+// app.put("/subscribers/:id/update", subscribersController.update, subscribersController.redirectView);
+// app.delete("/subscribers/:id/delete", subscribersController.delete, subscribersController.redirectView);
+// app.post("/subscribers/create", subscribersController.create, subscribersController.redirectView);
 
 
 // app.get("/course", homeController.showCourse); //코스 페이지, 연락처 페이지, 연락처 제출 양식을 위한 라우트의 추가
 // app.get("/contact", homeController.showSignUp);
 // app.post("/contact", homeController.postedSignUpForm);
-//app.get("/subscribers", subscriberController.getAllSubscribers);
-//app.get("/contact", subscriberController.getSubscriptionPage);
-//app.post("/subscriber", subscriberController.saveSubscriber)
-
+// app.get("/subscribers", subscriberController.getAllSubscribers);
+// app.get("/contact", subscriberController.getSubscriptionPage);
+// app.post("/subscriber", subscriberController.saveSubscriber)
 // app.use(errorController.respondInternalError);
 // app.use(errorController.respondNoResourceFound);
 
+app.use('/subscribers',router);
 app.listen(app.get("port"), () => {
     console.log(`Server running on port: ${app.get("port")}`);
 });
