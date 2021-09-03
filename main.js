@@ -21,11 +21,9 @@ app.set("port", process.env.PORT || 3000);
 app.use(express.urlencoded({ extended: false })); //body-parser 추가 -> 유입되는 요청 본문을 해석하는 미들웨어로서 사용
 app.use(express.static("./public")) //정적 에셋 제공
 
-
 app.get('/', (req, res) => {
     res.render("index");
 });
-
 
 //SUBSCRIBERS
 // app.get("/subscribers", subscribersController.index, subscribersController.indexView);
@@ -35,7 +33,6 @@ app.get('/', (req, res) => {
 // app.put("/subscribers/:id/update", subscribersController.update, subscribersController.redirectView);
 // app.delete("/subscribers/:id/delete", subscribersController.delete, subscribersController.redirectView);
 // app.post("/subscribers/create", subscribersController.create, subscribersController.redirectView);
-
 
 // app.get("/course", homeController.showCourse); //코스 페이지, 연락처 페이지, 연락처 제출 양식을 위한 라우트의 추가
 // app.get("/contact", homeController.showSignUp);

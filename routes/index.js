@@ -3,5 +3,4 @@ const subscriberRoutes = require("./subscriberRoutes");
 
 router.use("/subscribers", subscriberRoutes);
 
-
 module.exports = router;

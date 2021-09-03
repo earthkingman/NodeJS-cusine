@@ -11,5 +11,4 @@ router.put("/:id/update", subscribersController.update, subscribersController.re
 router.delete("/:id/delete", subscribersController.delete, subscribersController.redirectView);
 router.post("/create", subscribersController.create, subscribersController.redirectView);
 
-
 module.exports = router
